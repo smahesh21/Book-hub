@@ -1,0 +1,27 @@
+.footer-container {
+  height: 60px;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.contact-us-heading {
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: #3d3c3c;
+}
+.responsive-footer {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footer-buttons {
+  outline: none;
+  background: none;
+  cursor: pointer;
+  border: none;
+}

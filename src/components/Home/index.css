@@ -1,0 +1,171 @@
+.home-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f5f7fa;
+}
+.responsive-home {
+  height: 100%;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+@media screen and (max-width: 576px) {
+  .responsive-home {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+  }
+}
+.heading {
+  font-family: 'Roboto';
+  font-size: 24px;
+  color: #1e293b;
+}
+.description {
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475569;
+}
+.top-rated-books-find-books {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+@media screen and (max-width: 576px) {
+  .top-rated-books-find-books {
+    width: 100%;
+  }
+}
+.top-rated-books-heading {
+  font-family: 'Roboto';
+  font-size: 24px;
+  color: #1c1c1b;
+}
+@media screen and (max-width: 576px) {
+  .top-rated-books-heading {
+    font-size: 18px;
+  }
+}
+.find-books-button {
+  height: 30px;
+  width: 100px;
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #3e8bf0;
+  border-radius: 5px;
+  border: none;
+}
+@media screen and (max-width: 576px) {
+  .find-books-button {
+    width: 80px;
+    height: 24px;
+    font-size: 12px;
+  }
+}
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style-type: none;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.slick-container {
+  width: 80%;
+  max-width: 1100px;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+@media screen and (max-width: 576px) {
+  .slider-container {
+    width: 100%;
+    max-width: 576px;
+  }
+}
+.slick-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+@media screen and (max-width: 576px) {
+  .slick-item {
+    width: 40%;
+  }
+}
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.cover-pic {
+  margin: 0px 10px;
+  height: 150px;
+  width: 90%;
+}
+@media screen and (max-width: 576px) {
+  .cover-pic {
+    height: 80px;
+    width: 90%;
+  }
+}
+.title {
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: #1c1c1b;
+  text-align: center;
+}
+.text-links {
+  text-decoration: none;
+}
+.author-name {
+  font-family: 'Roboto';
+  font-size: 12px;
+  color: #40403f;
+  text-align: center;
+}
+.failure-view-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.failure-image {
+  height: 340px;
+  width: 180px;
+}
+@media screen and (max-width: 576px) {
+  .failure-image {
+    height: 200px;
+    width: 100px;
+  }
+}
+.failure-heading {
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 24;
+}
+.try-again-button {
+  height: 30px;
+  width: 80px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #3e8bf0;
+  border: none;
+}
