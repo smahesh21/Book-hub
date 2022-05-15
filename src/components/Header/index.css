@@ -1,19 +1,31 @@
 .navbar {
   max-height: 100px;
-  background-color: #ffffff;
+  width: 100%;
+  border: 1px solid #f9f9f9;
+}
+.light-theme {
+  background-color: #f9f9f9;
+}
+.dark-theme {
+  background-color: #3a3d3b;
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    max-height: 150px;
+  }
 }
 .responsive-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 @media screen and (max-width: 576px) {
   .responsive-navbar {
     justify-content: space-between;
-    margin-left: 16px;
-    margin-right: 16px;
+    padding: 16px;
+    margin: 0px;
   }
 }
 .website-logo {
@@ -21,7 +33,7 @@
   height: 30px;
 }
 .nav-items-container {
-  width: 30%;
+  width: 40%;
   list-style-type: none;
   display: flex;
   justify-content: space-between;
@@ -49,10 +61,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .nav-text {
     font-size: 15px;
   }
+}
+.theme-button {
+  height: 30px;
+  width: 30px;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  border: none;
 }
 .close-icon {
   display: none;
@@ -82,7 +104,12 @@
 .nav-text {
   font-family: 'Roboto';
   font-size: 18px;
-  color: #727882;
+}
+.light-theme-text {
+  color: #475569;
+}
+.dark-theme-text {
+  color: #f9f9f9;
 }
 .styled-nav-text {
   color: #7ba1e3;

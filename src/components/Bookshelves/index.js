@@ -1,31 +1,32 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import {BsSearch, BsFillStarFill} from 'react-icons/bs'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import Footer from '../Footer'
-
+import BookHubThemeContext from '../../context/BookHubThemeContext'
 import './index.css'
 
 const bookshelvesList = [
   {
     id: '22526c8e-680e-4419-a041-b05cc239ece4',
-    value: 'ALL',
+    labelValue: 'ALL',
     label: 'All',
   },
   {
     id: '37e09397-fab2-46f4-9b9a-66b2324b2e22',
-    value: 'READ',
+    labelValue: 'READ',
     label: 'Read',
   },
   {
     id: '2ab42512-3d05-4fba-8191-5122175b154e',
-    value: 'CURRENTLY_READING',
+    labelValue: 'CURRENTLY_READING',
     label: 'Currently Reading',
   },
   {
     id: '361d5fd4-9ea1-4e0c-bd47-da2682a5b7c8',
-    value: 'WANT_TO_READ',
+    labelValue: 'WANT_TO_READ',
     label: 'Want to Read',
   },
 ]
@@ -42,7 +43,7 @@ class Bookshelves extends Component {
     booksList: [],
     searchInput: '',
     searchText: '',
-    bookshelfName: bookshelvesList[0].value,
+    bookshelfName: bookshelvesList[0].labelValue,
     apiStatus: apiStatusConstants.initial,
   }
 
@@ -100,135 +101,245 @@ class Bookshelves extends Component {
     this.setState({searchText: searchInput}, this.getBooks)
   }
 
-  renderBookShelvesListSection = () => {
-    const {bookshelfName} = this.state
-    return (
-      <div className="books-shelves-list-container">
-        <h1 className="bookshelves-heading">Bookshelves</h1>
-        <ul className="book-shelves-list">
-          {bookshelvesList.map(eachType => {
-            const {id, label, value} = eachType
-            const onClickShelf = () => {
-              this.onClickShelfItem(value)
-            }
-            return (
-              <li key={id} className="book-shelf">
-                <button
-                  type="button"
-                  onClick={onClickShelf}
-                  className="shelf-button"
-                >
-                  {label}
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    )
+  onClickTryAgain = () => {
+    this.getBooks()
   }
 
-  renderSearchSection = () => {
-    const {searchText} = this.state
-    console.log(searchText)
-    return (
-      <div className="search-container">
-        <input
-          type="search"
-          value={searchText}
-          onChange={this.onChangeSearchText}
-          className="search-element"
-          placeholder="Search"
-        />
-        <button
-          type="button"
-          testid="searchButton"
-          className="search-button"
-          onClick={this.onClickSearchIcon}
-        >
-          <BsSearch size={16} />
-        </button>
-      </div>
-    )
-  }
+  renderBookShelvesListSection = () => (
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const bgColor = isDarkTheme ? 'shelf-list-dark-theme' : 'light-theme'
+        const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        return (
+          <div className={`books-shelves-list-container ${bgColor}`}>
+            <h1 className={`bookshelves-heading ${textColor}`}>Bookshelves</h1>
+            <ul className="book-shelves-list">
+              {bookshelvesList.map(eachType => {
+                const {label, labelValue} = eachType
+                const onClickShelf = () => {
+                  this.onClickShelfItem(labelValue)
+                }
+                return (
+                  <li key={eachType.id} className="book-shelf">
+                    <button
+                      type="button"
+                      onClick={onClickShelf}
+                      className={`shelf-button ${textColor}`}
+                    >
+                      {label}
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
+  )
+
+  renderSearchSection = () => (
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
+        const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        const {searchInput} = this.state
+        console.log(searchInput)
+        return (
+          <div className={`search-container ${bgColor}`}>
+            <input
+              type="search"
+              value={searchInput}
+              onChange={this.onChangeSearchText}
+              className={`search-element ${textColor}`}
+              placeholder="Search"
+            />
+            <button
+              type="button"
+              testid="searchButton"
+              className={`search-button ${bgColor} ${textColor}`}
+              onClick={this.onClickSearchIcon}
+            >
+              <BsSearch className={textColor} size={16} />
+            </button>
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
+  )
+
+  renderNoBooksView = () => (
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        const {searchText} = this.state
+        return (
+          <div className="no-books-container">
+            <img
+              src="https://res.cloudinary.com/diocftr6t/image/upload/v1651941086/Asset_1_1SearchNotFoundImage_bka7pe.png"
+              className="no-books"
+              alt="no books"
+            />
+            <p className={`empty-list-message ${textColor}`}>
+              Your search for {searchText} did not find any matches.
+            </p>
+            <Footer />
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
+  )
 
   renderBooksList = () => {
     const {booksList} = this.state
+    const isEmptyBooksList = booksList.length === 0
     return (
-      <ul className="books-list-container">
-        {booksList.map(eachBook => {
-          const {id, title, coverPic, rating, readStatus, authorName} = eachBook
+      <BookHubThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          const textColor = !isDarkTheme
+            ? 'light-theme-text'
+            : 'dark-theme-text'
           return (
-            <li key={id} className="bookslist-item">
-              <img src={coverPic} className="cover-pic" alt={title} />
-              <div className="book-details-container">
-                <h1 className="title">{title}</h1>
-                <p className="author-name">{authorName}</p>
-                <p className="rating">
-                  Avg Rating <BsFillStarFill size={12} className="star" />{' '}
-                  {rating}
-                </p>
-                <p className="read-status">
-                  Status:{' '}
-                  <span className="read-status-span-text">{readStatus}</span>
-                </p>
-              </div>
-            </li>
+            <>
+              <ul className="books-list-container">
+                {isEmptyBooksList && this.renderNoBooksView()}
+                {!isEmptyBooksList &&
+                  booksList.map(eachBook => {
+                    const {
+                      id,
+                      title,
+                      coverPic,
+                      rating,
+                      readStatus,
+                      authorName,
+                    } = eachBook
+                    return (
+                      <Link to={`/books/${id}`} className="text-links">
+                        <li key={id} className="bookslist-item">
+                          <img
+                            src={coverPic}
+                            className="book-shelf-cover-pic"
+                            alt={title}
+                          />
+                          <div className="books-details-container">
+                            <h1 className={`book-shelf-title ${textColor}`}>
+                              {title}
+                            </h1>
+                            <p
+                              className={`book-shelf-author-name ${textColor}`}
+                            >
+                              {authorName}
+                            </p>
+                            <p className={`book-shelf-rating ${textColor}`}>
+                              Avg Rating{' '}
+                              <BsFillStarFill size={12} className="star" />{' '}
+                              {rating}
+                            </p>
+                            <p
+                              className={`book-shelf-read-status ${textColor}`}
+                            >
+                              Status:{' '}
+                              <span className="book-shelf-read-status-span-text">
+                                {readStatus}
+                              </span>
+                            </p>
+                          </div>
+                        </li>
+                      </Link>
+                    )
+                  })}
+              </ul>
+              <Footer />
+            </>
           )
-        })}
-      </ul>
+        }}
+      </BookHubThemeContext.Consumer>
     )
   }
 
-  renderBooksDisplaySection = () => {
-    const {bookshelfName} = this.state
-    const bookShelf = bookshelvesList.filter(
-      eachShelf => eachShelf.value === bookshelfName,
-    )
-    console.log(bookShelf)
-    const shelfName = bookShelf[0].label
+  renderBooksDisplaySection = () => (
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        const {bookshelfName} = this.state
+        const bookShelf = bookshelvesList.filter(
+          eachShelf => eachShelf.labelValue === bookshelfName,
+        )
+        console.log(bookShelf)
+        const shelfName = bookShelf[0].label
 
-    return (
-      <div className="books-display-container">
-        <div className="heading-search-container">
-          <h1 className="all-books-heading">{`${shelfName} Books`}</h1>
-          {this.renderSearchSection()}
-        </div>
-        {this.renderBooksList()}
-      </div>
-    )
-  }
+        return (
+          <div className="books-display-container">
+            <div className="heading-search-container">
+              <h1
+                className={`all-books-heading ${textColor}`}
+              >{`${shelfName} Books`}</h1>
+              {this.renderSearchSection()}
+            </div>
+            {this.renderBooksList()}
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
+  )
 
   renderBookShelvesSection = () => (
-    <div className="book-shelves-responsive-container">
-      {this.renderBookShelvesListSection()}
-      {this.renderBooksDisplaySection()}
-    </div>
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
+        return (
+          <div>
+            <div className={`book-shelves-responsive-container ${bgColor}`}>
+              {this.renderBookShelvesListSection()}
+              {this.renderBooksDisplaySection()}
+            </div>
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
   )
 
   renderFailureView = () => (
-    <div className="failure-view-container">
-      <img
-        src="https://res.cloudinary.com/diocftr6t/image/upload/v1651940772/Group_7522Failure_Image_ykvhlm.png"
-        className="failure-image"
-        alt="failure view"
-      />
-      <p className="failure-heading">Something went wrong, Please try again.</p>
-      <div>
-        <button
-          type="button"
-          onClick={this.onClickTryAgain}
-          className="try-again-button"
-        >
-          Try Again
-        </button>
-      </div>
-    </div>
+    <BookHubThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        return (
+          <div className="book-shelves-failure-view-container">
+            <img
+              src="https://res.cloudinary.com/diocftr6t/image/upload/v1651940772/Group_7522Failure_Image_ykvhlm.png"
+              className="failure-image"
+              alt="failure view"
+            />
+            <p className={`failure-heading ${textColor}`}>
+              Something went wrong, Please try again.
+            </p>
+            <div>
+              <button
+                type="button"
+                onClick={this.onClickTryAgain}
+                className="try-again-button"
+              >
+                Try Again
+              </button>
+            </div>
+            <Footer />
+          </div>
+        )
+      }}
+    </BookHubThemeContext.Consumer>
   )
 
   renderLoader = () => (
     <div className="loader-container" testid="loader">
       <Loader type="TailSpin" color="#0284C7" height={50} width={50} />
+      <Footer />
     </div>
   )
 
@@ -251,7 +362,6 @@ class Bookshelves extends Component {
       <div className="book-shelves-container">
         <Header />
         {this.renderBooksListDisplayBasedOnApiStatus()}
-        <Footer />
       </div>
     )
   }

@@ -7,11 +7,18 @@
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  align-self: flex-end;
+  padding-bottom: 32px;
+}
+.light-theme-text {
+  color: #475569;
+}
+.dark-theme-text {
+  color: #f9f9f9;
 }
 .contact-us-heading {
   font-family: 'Roboto';
   font-size: 16px;
-  color: #3d3c3c;
 }
 .responsive-footer {
   width: 30%;
