@@ -1,8 +1,9 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BsSearch, BsFillStarFill} from 'react-icons/bs'
-import Cookies from 'js-cookie'
+
 import Header from '../Header'
 import Footer from '../Footer'
 import BookHubThemeContext from '../../context/BookHubThemeContext'
