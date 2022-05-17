@@ -91,7 +91,7 @@ class Login extends Component {
     }
     return (
       <div className="book-hub-login-page">
-        <div className="responsive-container">
+        <div className="login-responsive-container">
           <div className="login-page-left-side-section">
             <img
               src="https://res.cloudinary.com/diocftr6t/image/upload/v1651933010/Rectangle_1467Login-Image_krfcap.png"

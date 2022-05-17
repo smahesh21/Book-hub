@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .book-details-responsive-container {
   height: 80%;
@@ -45,6 +46,7 @@
     height: 90%;
     background-color: transparent;
     padding: 0px;
+    margin-right: 30px;
   }
 }
 .book-details-top-card {

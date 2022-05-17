@@ -9,7 +9,7 @@
   justify-content: flex-start;
   align-items: center;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .login-responsive-container {
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
   height: 100%;
   width: 50%;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .login-page-left-side-section {
     height: 30%;
     width: 100%;
@@ -34,7 +34,7 @@
   height: 100%;
   width: 100%;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .login-page-image {
     height: 70%;
     width: 70%;
@@ -51,7 +51,7 @@
   align-items: center;
   background-color: #faffff;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .login-page-right-side-section {
     width: 100%;
     height: 70%;
@@ -69,7 +69,7 @@
   padding: 16px;
   box-shadow: 0px 2px 4px 0px #a5b5d1;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .login-card {
     height: 80%;
     width: 80%;
