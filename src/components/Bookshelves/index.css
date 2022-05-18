@@ -4,7 +4,10 @@
   overflow-y: auto;
 }
 .light-theme {
-  background-color: #f9f9f9;
+  background-color: #f5f7fa;
+}
+.list-light-theme {
+  background-color: #ffffff;
 }
 .dark-theme {
   background-color: #181818;
@@ -96,6 +99,7 @@
   background: transparent;
   outline: none;
   cursor: pointer;
+  font-size: 13px;
 }
 @media screen and (max-width: 768px) {
   .shelf-button {
@@ -108,6 +112,23 @@
 }
 .active-shelf-button {
   color: #0284c7;
+  border: none;
+  background-color: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+  .active-shelf-button {
+    height: 30px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    background-color: #0284c7;
+    color: #ffffff;
+  }
 }
 .books-display-container {
   width: 75%;
@@ -314,7 +335,7 @@
 .book-shelves-failure-view-container {
   height: 50%;
   width: 100%;
-  margin-top: 50px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;

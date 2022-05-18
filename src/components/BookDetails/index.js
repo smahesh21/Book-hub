@@ -51,9 +51,9 @@ class BookDetails extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
+      /* console.log(fetchedData) */
       const updatedData = this.formattedData(fetchedData.book_details)
-      console.log(updatedData)
+      /* console.log(updatedData) */
       this.setState({
         bookDetails: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -71,7 +71,7 @@ class BookDetails extends Component {
     <BookHobThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
+        const bgColor = isDarkTheme ? 'card-dark-theme' : 'light-theme'
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
         const {bookDetails} = this.state
         const {

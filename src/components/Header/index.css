@@ -1,12 +1,11 @@
 .navbar {
   max-height: 100px;
   width: 100%;
-  border: 1px solid #f9f9f9;
 }
-.light-theme {
+.header-light-theme {
   background-color: #ffffff;
 }
-.dark-theme {
+.header-dark-theme {
   background-color: #3a3d3b;
 }
 @media screen and (max-width: 768px) {
@@ -18,10 +17,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 50px;
-  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .responsive-navbar {
     justify-content: space-between;
     padding: 16px;
@@ -100,6 +99,7 @@
 }
 .nav-links {
   text-decoration: none;
+  color: #7ba1e3;
 }
 .nav-text {
   font-family: 'Roboto';

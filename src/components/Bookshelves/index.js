@@ -79,7 +79,7 @@ class Bookshelves extends Component {
       const updatedList = fetchedData.books.map(eachBook =>
         this.formattedData(eachBook),
       )
-      console.log(updatedList)
+      /* console.log(updatedList) */
       this.setState({
         booksList: updatedList,
         apiStatus: apiStatusConstants.success,
@@ -110,7 +110,9 @@ class Bookshelves extends Component {
     <BookHubThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const bgColor = isDarkTheme ? 'shelf-list-dark-theme' : 'light-theme'
+        const bgColor = isDarkTheme
+          ? 'shelf-list-dark-theme'
+          : 'list-light-theme'
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
         return (
           <div className={`books-shelves-list-container ${bgColor}`}>
@@ -121,12 +123,18 @@ class Bookshelves extends Component {
                 const onClickShelf = () => {
                   this.onClickShelfItem(labelValue)
                 }
+                const {bookshelfName} = this.state
+                const isActive = labelValue === bookshelfName
+                console.log(isActive)
+                const textStyle = isActive
+                  ? 'active-shelf-button'
+                  : 'shelf-button'
                 return (
                   <li key={eachType.id} className="book-shelf">
                     <button
                       type="button"
                       onClick={onClickShelf}
-                      className={`shelf-button ${textColor}`}
+                      className={`${textStyle}`}
                     >
                       {label}
                     </button>
@@ -147,7 +155,7 @@ class Bookshelves extends Component {
         const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
         const {searchInput} = this.state
-        console.log(searchInput)
+        /*  console.log(searchInput) */
         return (
           <div className={`search-container ${bgColor}`}>
             <input
@@ -187,7 +195,6 @@ class Bookshelves extends Component {
             <p className={`empty-list-message ${textColor}`}>
               Your search for {searchText} did not find any matches.
             </p>
-            <Footer />
           </div>
         )
       }}
@@ -271,7 +278,7 @@ class Bookshelves extends Component {
         const bookShelf = bookshelvesList.filter(
           eachShelf => eachShelf.labelValue === bookshelfName,
         )
-        console.log(bookShelf)
+        /* console.log(bookShelf) */
         const shelfName = bookShelf[0].label
 
         return (
@@ -311,8 +318,9 @@ class Bookshelves extends Component {
       {value => {
         const {isDarkTheme} = value
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
         return (
-          <div className="book-shelves-failure-view-container">
+          <div className={`${bgColor} book-shelves-failure-view-container`}>
             <img
               src="https://res.cloudinary.com/diocftr6t/image/upload/v1651940772/Group_7522Failure_Image_ykvhlm.png"
               className="failure-image"

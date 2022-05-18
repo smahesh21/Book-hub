@@ -35,7 +35,9 @@ class Header extends Component {
         {value => {
           const {isDarkTheme, onClickThemeIcon} = value
 
-          const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
+          const bgColor = isDarkTheme
+            ? 'header-dark-theme'
+            : 'header-light-theme'
           const textColor = !isDarkTheme
             ? 'light-theme-text'
             : 'dark-theme-text'

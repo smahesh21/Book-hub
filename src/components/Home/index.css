@@ -3,8 +3,12 @@
   width: 100vw;
 }
 .light-theme {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
+.dark-slider {
+  background-color: #343536;
+}
+
 .dark-theme {
   background-color: #181818;
 }
@@ -13,6 +17,9 @@
 }
 .dark-theme-text {
   color: #f9f9f9;
+}
+.slider-theme-light {
+  background-color: #ffffff;
 }
 .responsive-home {
   height: 100%;
@@ -130,7 +137,7 @@
 }
 
 .slick-item-cover-pic {
-  height: 100px;
+  height: 150px;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
@@ -169,7 +176,7 @@
   align-items: center;
 }
 .home-failure-image {
-  height: 340px;
+  height: 200px;
   width: 180px;
 }
 @media screen and (max-width: 768px) {
@@ -181,7 +188,6 @@
 .home-failure-heading {
   font-family: 'Roboto';
   font-size: 16px;
-  line-height: 24;
 }
 .home-try-again-button {
   height: 30px;
@@ -192,6 +198,11 @@
   background-color: #3e8bf0;
   border: none;
 }
-.dark-slider {
-  background-color: #343536;
+.title {
+  font-family: 'Roboto';
+  font-size: 18px;
+}
+.author-name {
+  font-family: 'Roboto';
+  font-size: 10px;
 }

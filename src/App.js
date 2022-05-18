@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     const {isDarkTheme} = this.state
-    console.log(isDarkTheme)
+    /* console.log(isDarkTheme) */
     return (
       <BookHubThemeContext.Provider
         value={{

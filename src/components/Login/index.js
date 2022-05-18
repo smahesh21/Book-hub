@@ -84,7 +84,7 @@ class Login extends Component {
 
   render() {
     const {showErrorMsg, errorMsg} = this.state
-    console.log(errorMsg)
+    /* console.log(errorMsg) */
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -103,7 +103,7 @@ class Login extends Component {
             <div className="login-card">
               <img
                 src="https://res.cloudinary.com/diocftr6t/image/upload/v1651940745/Group_7731Website_Logo_o1zltx.png"
-                className="website-logo"
+                className="login-website-logo"
                 alt="login website logo"
               />
               <form onSubmit={this.onSubmitForm} className="form-container">
