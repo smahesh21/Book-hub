@@ -138,7 +138,7 @@
 
 .slick-item-cover-pic {
   height: 150px;
-  width: 100%;
+  width: 80%;
 }
 @media screen and (max-width: 768px) {
   .slick-item-cover-pic {
