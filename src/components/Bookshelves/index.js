@@ -114,6 +114,9 @@ class Bookshelves extends Component {
           ? 'shelf-list-dark-theme'
           : 'list-light-theme'
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
+        const buttonText = isDarkTheme
+          ? 'shelf-button-dark-text'
+          : 'shelf-button-light-text'
         return (
           <div className={`books-shelves-list-container ${bgColor}`}>
             <h1 className={`bookshelves-heading ${textColor}`}>Bookshelves</h1>
@@ -134,7 +137,7 @@ class Bookshelves extends Component {
                     <button
                       type="button"
                       onClick={onClickShelf}
-                      className={`${textStyle}`}
+                      className={`${buttonText} ${textStyle}`}
                     >
                       {label}
                     </button>
@@ -152,7 +155,7 @@ class Bookshelves extends Component {
     <BookHubThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const bgColor = isDarkTheme ? 'dark-theme' : 'light-theme'
+        const bgColor = isDarkTheme ? 'search-dark-theme' : 'light-theme'
         const textColor = !isDarkTheme ? 'light-theme-text' : 'dark-theme-text'
         const {searchInput} = this.state
         /*  console.log(searchInput) */

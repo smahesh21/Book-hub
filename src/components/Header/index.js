@@ -48,7 +48,7 @@ class Header extends Component {
 
           return (
             <nav className={`navbar ${bgColor}`}>
-              <div className="responsive-navbar">
+              <div className={`header-responsive-navbar ${bgColor}`}>
                 <Link to="/">
                   <img
                     src="https://res.cloudinary.com/diocftr6t/image/upload/v1651940745/Group_7731Website_Logo_o1zltx.png"

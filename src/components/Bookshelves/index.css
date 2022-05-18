@@ -12,6 +12,9 @@
 .dark-theme {
   background-color: #181818;
 }
+.search-dark-theme {
+  background-color: #3a3d3b;
+}
 .light-theme-text {
   color: #475569;
 }
@@ -101,6 +104,12 @@
   cursor: pointer;
   font-size: 13px;
 }
+.shelf-button-dark-text {
+  color: #ffffff;
+}
+.shelf-button-light-text {
+  color: #181818;
+}
 @media screen and (max-width: 768px) {
   .shelf-button {
     height: 30px;
@@ -165,8 +174,7 @@
   justify-content: flex-start;
   align-items: center;
   border: 1px solid #4a4a4a;
-  border-radius: 5px;
-  background-color: transparent;
+  border-radius: 2px;
 }
 @media screen and (max-width: 768px) {
   .all-books-heading {
@@ -180,7 +188,8 @@
 .search-element {
   height: 100%;
   width: 85%;
-  background-color: transparent;
+  background-color: #ffffff;
+  border-radius: 0px 1px 1px 0px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -190,7 +199,7 @@
   height: 100%;
   width: 15%;
   outline: none;
-  border-left: 1px solid #475596;
+  border-left: 1px solid #181818;
   border-top: 0px;
   border-right: 0px;
   border-bottom: 0px;
@@ -204,6 +213,7 @@
   }
   .search-button {
     width: 10%;
+    border-left: 1px solid #181818;
   }
 }
 .books-list-container {
